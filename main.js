@@ -14,4 +14,31 @@ tabList.addEventListener("click", (e) => {
             tab.classList.remove("active");
         }
     });
+    const activePanel = document.querySelector(".panel.active");
+    const toActivePanel = document.querySelector(`[data-panel = "${tabIndex}"]`);
+    activePanel.classList.add("close");
+    activePanel.addEventListener("animationend", (e) => {
+        activePanel.classList.remove("active")
+        activePanel.classList.remove("close")
+        <toActivePanel.classList.add("active")
+    },
+    {
+        once: true,
+    }
+    );
 });
+
+const showHidePassowrds = (type) => {
+    const passwordButton = document.getElementById(`${type}-password-eye`)
+    passwordButton.addEventListener("click", (e) => {
+        const passwordInput = document.getElementById(`${type}-password`);
+        const icon = passwordButton.querySelector("i");
+        const isVisible = icon.classList.contains("ri-eye-fill");
+        passwordInput.type = isVisible?"password": "text";
+        icon.setAttribute("class", isVisible ? "ri-eye-off-fill" : "ri-eye-fill");
+})
+};
+
+showHidePassowrds("login");
+showHidePassowrds("signup");
+showHidePassowrds("confirm");
